@@ -9,9 +9,10 @@
 import Foundation
 
 class Player : Codable {
-    var name : String
-    var lastName : String
-    var number : Int
-    var skill : Int
+    var name : String = ""
+    var done : Bool = false
+    var lastName : String = ""
+    var number : Int = 1
+    var skill : Int = 1
     
 }
