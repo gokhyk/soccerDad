@@ -22,6 +22,7 @@ class propertyViewController: UIViewController {
         // Do any additional setup after loading the view.
         if let path = Bundle.main.path(forResource: "Settings", ofType: "plist") {
             if let dict = NSDictionary(contentsOfFile: path) as? Dictionary<String, AnyObject> {
+                print(path)
                 // use swift dictionary as normal
                 values[1] = dict["players"] as! Int
                 values[0] = dict["minutes"] as! Int
@@ -39,19 +40,23 @@ class propertyViewController: UIViewController {
     }
     
     @IBAction func minutesChanged(_ sender: UITextField) {
-        print("minutes changed to " + minutesText.text!)
+
         mDict["minutes"] = Int(minutesText.text!)
+        print("minutes changed to " + "\(mDict["minutes"]!)")
         let path = Bundle.main.path(forResource: "Settings", ofType: "plist")
-        let url : URL = URL(fileURLWithPath: path!)
-        NSDictionary(dictionary: mDict).write(to: url, atomically: true)
+        print(path as Any)
+        //let url : URL = URL(fileURLWithPath: path!)
+        NSDictionary(dictionary: mDict).write(toFile: path!, atomically: true)
     }
     
     @IBAction func playersChanged(_ sender: UITextField) {
-        print("players changed to " + playersText.text!)
+
         mDict["players"] = Int(playersText.text!)
+        print("players changed to " + "\(mDict["players"]!)")
         let path = Bundle.main.path(forResource: "Settings", ofType: "plist")
-        let url : URL = URL(fileURLWithPath: path!)
-        NSDictionary(dictionary: mDict).write(to: url, atomically: true)
+        print(path!)
+        //let url : URL = URL(fileURLWithPath: path!)
+        NSDictionary(dictionary: mDict).write(toFile: path!, atomically: true)
     }
     
     /*

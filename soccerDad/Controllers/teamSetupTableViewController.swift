@@ -22,7 +22,7 @@ class teamSetupTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
+        print(dataFilePath!)
         loadPlayers()
     }
 
@@ -50,12 +50,13 @@ class teamSetupTableViewController: UITableViewController {
         
         let player = playerArray[indexPath.row]
         cell.textLabel?.text = player.name
-        cell.accessoryType = player.done ? .checkmark : .none
+        //cell.accessoryType = player.done ? .checkmark : .none
 
         return cell
     }
     
     //MARK - Tableview Delegate Methods
+    /*
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         playerArray[indexPath.row].done = !playerArray[indexPath.row].done
@@ -63,6 +64,7 @@ class teamSetupTableViewController: UITableViewController {
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    */
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
